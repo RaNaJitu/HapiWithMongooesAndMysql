@@ -9,6 +9,7 @@ exports.register = async function (server) {
         validate: service.validate
     });
 
+    //!Here i am trying to create cookie and azuread but it is not working 
     // server.auth.strategy('session', 'cookie', {
     //         password: 'password-should-be-32-characters',
     //         redirectTo:'/',
