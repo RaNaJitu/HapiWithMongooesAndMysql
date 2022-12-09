@@ -44,15 +44,17 @@ const postShift = require('../../models/employee/index');
 const APIHandler = async (request, h) => {
   try {
     let text = request.payload.text;
-    console.log('---text--', text);
     let newText = await postShift.insert({text});
-    console.log('---newText--', newText);
+    if(newText) {
+      return h.response({
+        message: `INSERTED SUCCESSFULLY -----  ${newText} `
+      }).code(201)
+    }
+    h.response({ message : `--data not inserted--`});
+    console.log('--data not inserted--');
     // newText.save();
-    return h.response({
-      message: `INSERTED SUCCESSFULLY -----  ${newText} `
-    }).code(201)
   } catch (error) {
-    console.log('-------->>>>>>>>>>>employee post api Error :--->', error)
+    console.log('------- TASK post api Error --->', error)
   }
 }
 

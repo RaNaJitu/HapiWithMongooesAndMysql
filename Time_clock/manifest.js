@@ -37,9 +37,9 @@ module.exports = {
                 }
             },
             {
-                plugin: require('./router/employee'),
+                plugin: require('./router/task'),
                 routes: {
-                    prefix: '/employee'
+                    prefix: '/task'
                 }
             }
         ]

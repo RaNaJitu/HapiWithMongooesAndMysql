@@ -6,16 +6,15 @@ const APIHandler = async (request, h) => {
     try {
       let text = request.payload;
       const id =  ObjectId(request.query.id);
-      console.log('---patch id--', id);
-      console.log('---patch text--', text);
         let newText = await patchShift.update({ _id: id }, { $set: text });
-      console.log('---patch newText--', newText);
-      // newText.save();
-      return h.response({
-        message: `UPDATED SUCCESSFULLY -----  ${newText} `
-      }).code(201)
+      if(newText) {
+        return h.response({
+          message: `UPDATED SUCCESSFULLY -----  ${newText} `
+        }).code(201)
+      }
+      console.log('--data not updated--');
     } catch (error) {
-      console.log('-------->>>>>>>>>>>employee post api Error :--->', error)
+      console.log('-------- TASK PATCH api Error --->', error)
     }
   }
 

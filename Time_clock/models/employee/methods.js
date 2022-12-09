@@ -28,7 +28,10 @@ const { Task } = require('../../mongodb/index')
 
 const insert = (data) => {
   console.log('--data>>>>>>>>>>---', data);
-  return Task.create(data);
+  const responseData = Task.create(data);
+  // const reeData = Task(data);
+  // const responseData = reeData.save();
+  return responseData;
 };
 
 const update = (condition, data) => {
@@ -40,15 +43,16 @@ const update = (condition, data) => {
 
 const deleteData = (condition) => {
   console.log('--delete condition>>>>>>>>>>---', condition);
-  console.log('--patch data>>>>>>>>>>---', Task);
-  // Task.deleteOne({"_id" : ObjectId("638f4be4c3a4f58acdf299b7")});
   return Task.deleteOne(condition);
-  // Task.deleteMany({"text" : "my task five"});
+  // return Task.deleteOne({"text" : "my task five"});
 };
+
+const getByIdShift = (condition) => Task.find(condition).exec();
 
 module.exports = {
     read,
     insert,
     update,
     deleteData,
+    getByIdShift,
 }

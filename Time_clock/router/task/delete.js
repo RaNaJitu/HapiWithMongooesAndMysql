@@ -16,7 +16,7 @@ const APIHandler = async (request, h) => {
         message: `DELETE SUCCESSFULLY -----  ${newText} `
       }).code(201)
     } catch (error) {
-      console.log('-------- employee post api Error --->', error)
+      console.log('-------- TASK DELETE api Error --->', error)
     }
   }
 

@@ -3,6 +3,7 @@ const postEmployee = require('./post');
 const getEmployee = require('./get');
 const patchEmployee = require('./patch');
 const deleteEmployee = require('./delete');
+const getById = require('./getById');
 const entity = 'employee';
 const service = require('../../mongodb/index');
 const { async } = require('rxjs');
@@ -87,6 +88,15 @@ exports.register = (server, option) => {
             auth: 'simple',
         },
         handler: deleteEmployee.APIHandler
+    })
+
+    server.route({
+        method: 'GET',
+        path: '/shift/{id}',
+        config:{
+            auth: 'simple',
+        },
+        handler: getById.APIHandler
     })
 }
 
