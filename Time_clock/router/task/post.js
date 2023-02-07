@@ -44,17 +44,24 @@ const postShift = require('../../models/employee/index');
 const APIHandler = async (request, h) => {
   try {
     let text = request.payload.text;
-    let newText = await postShift.insert({text});
-    if(newText) {
-      return h.response({
-        message: `INSERTED SUCCESSFULLY -----  ${newText} `
-      }).code(201)
+    if(!text) return h.response( { message: "text not should be empty"}).code(400)
+
+    let newText = await postShift.insert({tasks: text});
+
+    if(!newText) { 
+      console.log('--data not inserted--');
+      return h.response({ message : `--data not inserted--`});
     }
-    h.response({ message : `--data not inserted--`});
-    console.log('--data not inserted--');
+    
+    return h.response({
+      message: `INSERTED SUCCESSFULLY -----  ${newText} `
+    }).code(201)
     // newText.save();
   } catch (error) {
     console.log('------- TASK post api Error --->', error)
+    return h.response({
+      message: `Internal Server Error -----  ${error} `
+    }).code(500)
   }
 }
 

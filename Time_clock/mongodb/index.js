@@ -29,7 +29,7 @@ const connect = async () => {
 }
 
 const testSchema = new Schema({
-    test: {
+    text: {
         type: String,
         require: true
     }

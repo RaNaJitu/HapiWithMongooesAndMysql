@@ -10,6 +10,7 @@ const APIHandler = async (req, h) => {
         // return data;
         const id = ObjectId(req.params.id)
         const responseData = await getByIdShift.getByIdShift(id)
+        console.log('---responseData--', responseData);
         return h.response(`---id---${responseData}`);
     } catch (error) {
         console.log('---error---', error);

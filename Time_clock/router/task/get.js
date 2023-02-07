@@ -4,6 +4,7 @@ const APIHandler = async (req, reply) => {
     try {
         // const data = await service.findAll();
         const data = await getShift.read({});
+        console.log('---data--', data);
         return data;
     } catch (error) {
         console.log('---error---', error);

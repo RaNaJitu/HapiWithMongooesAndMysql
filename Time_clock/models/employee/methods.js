@@ -12,7 +12,7 @@ const { Task } = require('../../mongodb/index')
 //     })
 // }
 
-
+//! end for my SQL query
 
 // const read = (data) =>  db.get().collection(tableName).find().toArray();
 
@@ -35,14 +35,11 @@ const insert = (data) => {
 };
 
 const update = (condition, data) => {
-  console.log('--patch condition>>>>>>>>>>---', condition);
-  console.log('--patch data>>>>>>>>>>---', data);
   return Task.updateOne(condition, data);
 };
 
 
 const deleteData = (condition) => {
-  console.log('--delete condition>>>>>>>>>>---', condition);
   return Task.deleteOne(condition);
   // return Task.deleteOne({"text" : "my task five"});
 };
